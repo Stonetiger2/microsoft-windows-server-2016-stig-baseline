@@ -224,11 +224,25 @@ control 'V-73255' do
           acl_rules.each do |acl_rule|
             describe "The '#{path}' key\'s access rule property:" do
               subject { acl_rule }
-              its(['RegistryRights']) { should cmp "ReadKey" }
+              its(['RegistryRights']) { should cmp "-2147483648" }
               its(['AccessControlType']) { should cmp "Allow" }
               its(['IdentityReference']) { should cmp "BUILTIN\\Users" }
               its(['IsInherited']) { should cmp "False" }
               its(['InheritanceFlags']) { should cmp "ContainerInherit" }
+              its(['PropagationFlags']) { should cmp "InheritOnly" }
+            end
+          end
+        end
+
+        describe.one do
+          acl_rules.each do |acl_rule|
+            describe "The '#{path}' key\'s access rule property:" do
+              subject { acl_rule }
+              its(['RegistryRights']) { should cmp "ReadKey" }
+              its(['AccessControlType']) { should cmp "Allow" }
+              its(['IdentityReference']) { should cmp "BUILTIN\\Users" }
+              its(['IsInherited']) { should cmp "False" }
+              its(['InheritanceFlags']) { should cmp "None" }
               its(['PropagationFlags']) { should cmp "None" }
             end
           end
