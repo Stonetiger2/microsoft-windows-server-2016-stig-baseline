@@ -30,5 +30,8 @@ control 'V-73269' do
     describe service('McAfee Framework Service') do
       it { should be_running }
     end
+    describe service('Trend Micro Deep Security Agent') do
+      it { should be_running }
+    end
   end
 end
