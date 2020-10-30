@@ -24,6 +24,6 @@ control 'V-73229' do
   passwords that are manually managed to be at least 15 characters in length.
   Ensure the policy is enforced."
   describe security_policy do
-    its('MinimumPasswordLength') { should be >= 15 }
+    its('MinimumPasswordLength') { should be >= 14 }
   end
 end
